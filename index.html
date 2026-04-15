@@ -109,6 +109,26 @@
             transform: translateY(30px);
             will-change: transform, opacity;
         }
+
+        /* Ensure smooth scroll padding for fixed header */
+        section {
+            scroll-margin-top: 5rem;
+        }
+
+        /* Timeline Styles */
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.3), transparent);
+        }
+        @media (min-width: 768px) {
+            .timeline-line {
+                left: 50%;
+            }
+        }
     </style>
 </head>
 <body class="selection:bg-indigo-500/30">
@@ -125,6 +145,7 @@
             <div class="hidden md:flex items-center space-x-10 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#expertise" class="hover:text-white transition-colors">Expertise</a>
+                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
                 <a href="#tools" class="hover:text-white transition-colors">Tools</a>
                 <a href="#contact" class="text-white bg-white/5 border border-white/10 px-6 py-2.5 rounded-full hover:bg-white hover:text-black transition-all">
                     Let's Connect
@@ -141,11 +162,12 @@
     <div id="mobile-menu" class="fixed inset-0 bg-[#020203] z-[115] flex flex-col items-center justify-center space-y-8 md:hidden">
         <a href="#about" class="text-3xl font-black uppercase tracking-tighter text-white" onclick="toggleMenu()">About</a>
         <a href="#expertise" class="text-3xl font-black uppercase tracking-tighter text-white" onclick="toggleMenu()">Expertise</a>
+        <a href="#experience" class="text-3xl font-black uppercase tracking-tighter text-white" onclick="toggleMenu()">Experience</a>
         <a href="#tools" class="text-3xl font-black uppercase tracking-tighter text-white" onclick="toggleMenu()">Tools</a>
         <a href="#contact" class="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold uppercase text-sm tracking-widest" onclick="toggleMenu()">Let's Connect</a>
     </div>
 
-    <!-- SIMPLIFIED HERO SECTION -->
+    <!-- HERO SECTION -->
     <section id="hero-wrapper" class="min-h-screen w-full flex flex-col items-center justify-center text-center px-6 grid-bg pt-20">
         
         <!-- Background Blueprint -->
@@ -182,16 +204,16 @@
 
     <!-- ABOUT SECTION -->
     <section id="about" class="py-20 sm:py-32 border-t border-white/5 relative z-10 bg-[#020203]">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-20 reveal">
                 <p class="mono text-[10px] text-indigo-500 mb-6 tracking-[0.4em] font-bold uppercase">The Engineer</p>
-                <h2 class="text-4xl sm:text-6xl font-black text-white uppercase mb-8 tracking-tighter leading-tight italic">Engineering Efficiency.</h2>
+                <h2 class="text-4xl sm:text-6xl font-black text-white uppercase mb-8 tracking-tighter leading-tight italic">Engineering Efficiency</h2>
                 <p class="text-slate-400 text-lg sm:text-xl leading-relaxed">
                     I specialize in taking the technical weight off my clients' shoulders, building digital solutions that are as efficient as they are effective. I approach complex systems with a unique structural perspective, ensuring every automation and workflow is built for long-term scalability.
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 gap-8 py-12 border-y border-white/5 mb-20 reveal">
+            <div class="max-w-4xl mx-auto grid grid-cols-2 gap-8 py-12 border-y border-white/5 mb-20 reveal">
                 <div class="text-center">
                     <div class="text-4xl sm:text-5xl font-black text-white mb-2 tracking-tighter">5+</div>
                     <div class="text-[10px] text-indigo-500 uppercase tracking-[0.3em] font-bold">Years in Operations</div>
@@ -202,7 +224,8 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 about-cards">
+            <!-- About Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 about-cards">
                 <div class="reveal p-6 bg-white/5 rounded-3xl border border-white/10 hover:bg-white/[0.08] transition-colors group text-center">
                     <i data-lucide="zap" class="text-indigo-500 mb-4 w-6 h-6 mx-auto group-hover:scale-110 transition-transform"></i>
                     <h4 class="font-bold text-white text-[11px] mb-1 uppercase tracking-wider">Fast Execution</h4>
@@ -223,71 +246,10 @@
                     <h4 class="font-bold text-white text-[11px] mb-1 uppercase tracking-wider">EA Support</h4>
                     <p class="text-[9px] text-slate-500 uppercase">Executive Ops</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TOOLS & SOFTWARE SECTION -->
-    <section id="tools" class="py-20 sm:py-32 relative z-10 bg-[#020203] border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-16 reveal">
-                <p class="mono text-[10px] text-indigo-500 mb-4 tracking-[0.4em] font-bold uppercase">Software Ecosystem</p>
-                <h2 class="text-4xl sm:text-5xl font-black text-white uppercase tracking-tighter">The Toolstack.</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 tools-grid">
-                <div class="space-y-6 reveal">
-                    <div class="flex items-center gap-3 text-indigo-400">
-                        <i data-lucide="database" class="w-5 h-5"></i>
-                        <h4 class="mono text-[11px] font-bold uppercase tracking-widest">CRM & Systems</h4>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="software-pill text-white border-indigo-500/30">GoHighLevel</span>
-                        <span class="software-pill">HubSpot</span>
-                        <span class="software-pill">Zoho CRM</span>
-                        <span class="software-pill">Shopify</span>
-                    </div>
-                </div>
-
-                <div class="space-y-6 reveal">
-                    <div class="flex items-center gap-3 text-emerald-400">
-                        <i data-lucide="cpu" class="w-5 h-5"></i>
-                        <h4 class="mono text-[11px] font-bold uppercase tracking-widest">Automation & AI</h4>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="software-pill text-white border-emerald-500/30">GHL Workflows</span>
-                        <span class="software-pill">ChatGPT</span>
-                        <span class="software-pill">Google Gemini</span>
-                        <span class="software-pill">Zapier</span>
-                    </div>
-                </div>
-
-                <div class="space-y-6 reveal">
-                    <div class="flex items-center gap-3 text-yellow-400">
-                        <i data-lucide="globe" class="w-5 h-5"></i>
-                        <h4 class="mono text-[11px] font-bold uppercase tracking-widest">Web & SEO</h4>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="software-pill">WordPress</span>
-                        <span class="software-pill">SEO Logic</span>
-                        <span class="software-pill">Ahrefs</span>
-                        <span class="software-pill">G-Analytics</span>
-                        <span class="software-pill">Search Console</span>
-                    </div>
-                </div>
-
-                <div class="space-y-6 reveal">
-                    <div class="flex items-center gap-3 text-blue-400">
-                        <i data-lucide="layout" class="w-5 h-5"></i>
-                        <h4 class="mono text-[11px] font-bold uppercase tracking-widest">Project Ops</h4>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="software-pill">Notion</span>
-                        <span class="software-pill">Trello</span>
-                        <span class="software-pill">ClickUp</span>
-                        <span class="software-pill">Monday.com</span>
-                        <span class="software-pill">Figma</span>
-                    </div>
+                <div class="reveal p-6 bg-white/5 rounded-3xl border border-white/10 hover:bg-white/[0.08] transition-colors group text-center">
+                    <i data-lucide="share-2" class="text-purple-500 mb-4 w-6 h-6 mx-auto group-hover:scale-110 transition-transform"></i>
+                    <h4 class="font-bold text-white text-[11px] mb-1 uppercase tracking-wider">Social Media</h4>
+                    <p class="text-[9px] text-slate-500 uppercase">Management</p>
                 </div>
             </div>
         </div>
@@ -342,6 +304,192 @@
         </div>
     </section>
 
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="py-20 sm:py-32 bg-[#020203] relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 reveal">
+                <p class="mono text-[10px] text-indigo-500 mb-4 tracking-[0.4em] font-bold uppercase">The Flight Path</p>
+                <h2 class="text-4xl sm:text-5xl font-black text-white uppercase tracking-tighter italic">Professional Journey.</h2>
+            </div>
+
+            <div class="relative">
+                <div class="timeline-line"></div>
+                
+                <div class="space-y-24">
+                    <!-- The Culture Agency -->
+                    <div class="relative pl-12 md:pl-0 reveal">
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-[45%] md:text-right md:pr-16 order-1 md:order-1 mb-4 md:mb-0">
+                                <div class="mono text-indigo-500 text-xs font-bold uppercase tracking-widest mb-2">January 2026</div>
+                                <h3 class="text-2xl font-black text-white uppercase">GHL Specialist</h3>
+                                <p class="text-slate-500 text-sm uppercase font-bold tracking-wider">The Culture Agency</p>
+                            </div>
+                            
+                            <div class="absolute left-0 md:left-1/2 top-0 md:-translate-x-1/2 w-10 h-10 bg-indigo-600 rounded-full border-4 border-[#020203] z-10 flex items-center justify-center">
+                                <i data-lucide="zap" class="w-4 h-4 text-white"></i>
+                            </div>
+
+                            <div class="md:w-[45%] md:pl-16 order-2 md:order-2">
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Strategic management of agency digital assets. Optimized website infrastructure and handled complex domain migrations and setups exclusively through the GoHighLevel platform.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Classical VS -->
+                    <div class="relative pl-12 md:pl-0 reveal">
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-[45%] md:text-left md:pl-16 order-1 md:order-2 mb-4 md:mb-0">
+                                <div class="mono text-indigo-500 text-xs font-bold uppercase tracking-widest mb-2">2026 Project</div>
+                                <h3 class="text-2xl font-black text-white uppercase">Website Developer</h3>
+                                <p class="text-slate-500 text-sm uppercase font-bold tracking-wider">Classical VS</p>
+                            </div>
+                            
+                            <div class="absolute left-0 md:left-1/2 top-0 md:-translate-x-1/2 w-10 h-10 bg-white/10 rounded-full border-4 border-[#020203] z-10 flex items-center justify-center">
+                                <i data-lucide="monitor" class="w-4 h-4 text-slate-400"></i>
+                            </div>
+
+                            <div class="md:w-[45%] md:pr-16 order-2 md:order-1 md:text-right">
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    End-to-end website engineering. Managed a project-based development cycle, building a professional web presence from scratch with a focus on architecture and performance.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Le Valet Butler -->
+                    <div class="relative pl-12 md:pl-0 reveal">
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-[45%] md:text-right md:pr-16 order-1 md:order-1 mb-4 md:mb-0">
+                                <div class="mono text-indigo-500 text-xs font-bold uppercase tracking-widest mb-2">Oct 2025 — Jan 2026</div>
+                                <h3 class="text-2xl font-black text-white uppercase">Website Manager & SMM</h3>
+                                <p class="text-slate-500 text-sm uppercase font-bold tracking-wider">Le Valet Butler</p>
+                            </div>
+                            
+                            <div class="absolute left-0 md:left-1/2 top-0 md:-translate-x-1/2 w-10 h-10 bg-white/5 rounded-full border-4 border-[#020203] z-10 flex items-center justify-center">
+                                <i data-lucide="share-2" class="w-4 h-4 text-slate-600"></i>
+                            </div>
+
+                            <div class="md:w-[45%] md:pl-16 order-2 md:order-2">
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Maintained site information integrity and engineered custom pages per client requirements. Managed social media presence through creation and distribution of static advertisements.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jo’s Café -->
+                    <div class="relative pl-12 md:pl-0 reveal">
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-[45%] md:text-left md:pl-16 order-1 md:order-2 mb-4 md:mb-0">
+                                <div class="mono text-indigo-500 text-xs font-bold uppercase tracking-widest mb-2">Gig Employment</div>
+                                <h3 class="text-2xl font-black text-white uppercase">Website Developer</h3>
+                                <p class="text-slate-500 text-sm uppercase font-bold tracking-wider">Jo’s Café</p>
+                            </div>
+                            
+                            <div class="absolute left-0 md:left-1/2 top-0 md:-translate-x-1/2 w-10 h-10 bg-white/5 rounded-full border-4 border-[#020203] z-10 flex items-center justify-center">
+                                <i data-lucide="code-2" class="w-4 h-4 text-slate-600"></i>
+                            </div>
+
+                            <div class="md:w-[45%] md:pr-16 order-2 md:order-1 md:text-right">
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Rapid deployment project. Engineered a full restaurant website using WordPress from scratch within a 3-day turnaround to establish an immediate digital presence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Puzzles Café -->
+                    <div class="relative pl-12 md:pl-0 reveal">
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-[45%] md:text-right md:pr-16 order-1 md:order-1 mb-4 md:mb-0">
+                                <div class="mono text-indigo-500 text-xs font-bold uppercase tracking-widest mb-2">January 2021</div>
+                                <h3 class="text-2xl font-black text-white uppercase">Operations & SMM</h3>
+                                <p class="text-slate-500 text-sm uppercase font-bold tracking-wider">Puzzles Café</p>
+                            </div>
+                            
+                            <div class="absolute left-0 md:left-1/2 top-0 md:-translate-x-1/2 w-10 h-10 bg-white/5 rounded-full border-4 border-[#020203] z-10 flex items-center justify-center">
+                                <i data-lucide="database" class="w-4 h-4 text-slate-800"></i>
+                            </div>
+
+                            <div class="md:w-[45%] md:pl-16 order-2 md:order-2">
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Foundation in administrative and digital precision. Responsible for payroll processing, data entry, and social media management, ensuring high-accuracy documentation and brand consistency.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS & SOFTWARE SECTION -->
+    <section id="tools" class="py-20 sm:py-32 relative z-10 bg-[#020203] border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <p class="mono text-[10px] text-indigo-500 mb-4 tracking-[0.4em] font-bold uppercase">Software Ecosystem</p>
+                <h2 class="text-4xl sm:text-5xl font-black text-white uppercase tracking-tighter">Tools</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 tools-grid">
+                <div class="space-y-6 reveal">
+                    <div class="flex items-center gap-3 text-indigo-400">
+                        <i data-lucide="database" class="w-5 h-5"></i>
+                        <h4 class="mono text-[11px] font-bold uppercase tracking-widest">CRM & Systems</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="software-pill text-white border-indigo-500/30">GoHighLevel</span>
+                        <span class="software-pill">HubSpot</span>
+                        <span class="software-pill">Zoho CRM</span>
+                        <span class="software-pill">Shopify</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6 reveal">
+                    <div class="flex items-center gap-3 text-emerald-400">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                        <h4 class="mono text-[11px] font-bold uppercase tracking-widest">Automation & AI</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="software-pill text-white border-emerald-500/30">GHL Workflows</span>
+                        <span class="software-pill">ChatGPT</span>
+                        <span class="software-pill">Google Gemini</span>
+                        <span class="software-pill">Zapier</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6 reveal">
+                    <div class="flex items-center gap-3 text-yellow-400">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        <h4 class="mono text-[11px] font-bold uppercase tracking-widest">Web & SEO</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="software-pill">WordPress</span>
+                        <span class="software-pill">SEO Logic</span>
+                        <span class="software-pill">G-Analytics</span>
+                        <span class="software-pill">Search Console</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6 reveal">
+                    <div class="flex items-center gap-3 text-blue-400">
+                        <i data-lucide="layout" class="w-5 h-5"></i>
+                        <h4 class="mono text-[11px] font-bold uppercase tracking-widest">Project Ops</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="software-pill">Notion</span>
+                        <span class="software-pill">Trello</span>
+                        <span class="software-pill">ClickUp</span>
+                        <span class="software-pill">Monday.com</span>
+                        <span class="software-pill">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="py-20 sm:py-32 bg-[#020203] text-white text-center px-4">
         <div class="max-w-4xl mx-auto">
@@ -391,7 +539,7 @@
                 gsap.to(el, {
                     scrollTrigger: {
                         trigger: el,
-                        start: "top 85%", // Starts when top of element is at 85% of viewport height
+                        start: "top 85%",
                         toggleActions: "play none none none"
                     },
                     opacity: 1,
@@ -427,12 +575,27 @@
         function toggleMenu() {
             isMenuOpen = !isMenuOpen;
             mobileMenu.classList.toggle('active', isMenuOpen);
-            menuIcon.setAttribute('data-lucide', isMenuOpen ? 'x' : 'menu');
+            
+            // Update Icon
+            if (isMenuOpen) {
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
             lucide.createIcons();
+            
+            // Toggle body scroll
             document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
         }
 
         menuBtn.addEventListener('click', toggleMenu);
+
+        // Auto-close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
     </script>
 </body>
 </html>
